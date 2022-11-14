@@ -27,7 +27,7 @@
           <el-table-column label="操作">
             <template v-slot="scope">
 
-              <el-button type="primary" slot="reference" @click="update(scope.row.id)">修改</el-button>
+              <el-button type="primary" slot="reference" @click="update(scope.row)">修改</el-button>
               <el-popconfirm
                   style="margin-left: 5px"
                   title="您确定停止选课吗？"
@@ -52,7 +52,26 @@
           :total="total">
       </el-pagination>
     </div>
-
+    <el-dialog title="修改选课信息" :visible.sync="dialogFormVisible" width="30%">
+      <el-form :model="UpdateTable" label-width="100">
+        <el-form-item label="课程名称" prop="courseName">
+          <el-input v-model="UpdateTable.courseName" autocomplete="off" ></el-input>
+        </el-form-item>
+        <el-form-item label="老师" prop="teacherName">
+          <el-input v-model="UpdateTable.teacherName" autocomplete="off" ></el-input>
+        </el-form-item>
+        <el-form-item label="限选人数" prop="limitNum">
+          <el-input v-model="UpdateTable.limitNum" autocomplete="off" ></el-input>
+        </el-form-item>
+        <el-form-item label="上课地点" prop="address">
+          <el-input v-model="UpdateTable.address" autocomplete="off"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="dialogFormVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveUpdate">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -64,8 +83,19 @@ export default {
     return {
       form: {
       },
+      temp:{
+
+      },
+      dialogFormVisible: false,
       tableData: [
       ],
+      UpdateTable: {
+        courseName: '',
+        teacherName: '',
+        limitNum: 0,
+        address: '',
+        id: 0,
+  },
       params:{
         pageNum: 1,
         pageSize: 8,
@@ -83,15 +113,31 @@ export default {
         this.total=res.data.allCourses.length;
       })
     },
-    update(id){
-          request.post('course/admin/updateCourse',{
-            courseName:this.form.classname,
-            teacherName:this.form.name,
-            limitNum:this.form.num,
-            address:this.form.address
-          }).then(res=>{
-
-          })
+    saveUpdate(){
+      request.post('course/admin/updateCourse',{
+        courseName:this.UpdateTable.courseName,
+        teacherName:this.UpdateTable.teacherName,
+        limitNum:this.UpdateTable.limitNum,
+        address:this.UpdateTable.address,
+        id:this.UpdateTable.id,
+      }).then(res=>{
+          if(res.code===200) {
+            this.$notify.success("修改成功");
+            this.dialogFormVisible=false;
+            this.load()
+          }else{
+            this.$notify.error("修改失败");
+          }
+      })
+    },
+    update(row){
+      this.UpdateTable.courseName=row.courseName
+      this.UpdateTable.teacherName=row.teacherName
+      this.UpdateTable.limitNum=row.limitNum
+      this.UpdateTable.address=row.address
+      this.UpdateTable.id=row.id
+      console.log(this.UpdateTable)
+      this.dialogFormVisible = true;
     },
     clear(){
           this.form.classname='';
