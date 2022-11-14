@@ -25,6 +25,11 @@ const routes = [
                 path:'/selectClassHome',
                 name:'SelectClassHome',
                 component:()=>import('@/views/home/SelectClassHome')
+            },
+            {
+                path:'/classList',
+                name:'ClassList',
+                component:()=>import('@/views/studentClass/classList')
             }
         ]
     },

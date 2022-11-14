@@ -78,7 +78,7 @@ export default {
   },
   methods: {
     load(){
-      request.get('/course/student/getCourse').then(res=>{
+      request.get('course/student/getCourse').then(res=>{
         this.tableData=res.data.allCourses
         this.total=res.data.allCourses.length;
         // this.tableData.map((row)=>{

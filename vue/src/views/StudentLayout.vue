@@ -10,7 +10,7 @@
       <div style="flex: 1; text-align: right; padding-right: 20px">
         <el-dropdown size="medium">
          <span class="el-dropdown-link" style="cursor: pointer">
-           {{ admin.userInfo.number}}<i class="el-icon-arrow-down el-icon--right"></i>
+           {{ admin.userInfo.name}}<i class="el-icon-arrow-down el-icon--right"></i>
          </span>
           <el-dropdown-menu slot="dropdown" style="margin-top: -5px">
             <el-dropdown-item>
@@ -32,6 +32,10 @@
           <el-menu-item index="/">
             <i class="el-icon-eleme"></i>
             <span>选课</span>
+          </el-menu-item>
+          <el-menu-item index="/classlist">
+            <i class="el-icon-eleme"></i>
+            <span>我的课程信息</span>
           </el-menu-item>
 
         </el-menu>
