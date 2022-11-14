@@ -26,7 +26,7 @@
       <!-- 侧边栏导航 -->
       <div
           style="width: 200px; min-height: calc(100vh - 62px); overflow: hidden; margin-right: 2px; background-color: white;">
-        <!-- :default-openeds="['user', 'admin']"可以设置默认打开的子菜单，等号右边的值是子菜单的index构成的数组 -->
+        <!-- :default-openeds="['user', 'user']"可以设置默认打开的子菜单，等号右边的值是子菜单的index构成的数组 -->
         <el-menu :default-active="$route.path"
                  router class="el-menu-demo">
           <el-menu-item index="/">

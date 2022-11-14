@@ -3,7 +3,7 @@
   <h3 style="align-content: center">当前开设课程列表</h3>
   <div style="margin-left: 40px">
 
-    <el-table :data="tableData" stripe>
+    <el-table :data="tableData.slice((params.pageNum-1)*params.pageSize,params.pageNum*params.pageSize)" stripe>
       <el-table-column prop="courseName" label="课程名称"></el-table-column>
       <el-table-column prop="teacherName" label="老师"></el-table-column>
       <el-table-column prop="studentNum" label="选课人数"></el-table-column>
@@ -24,7 +24,7 @@
             <el-popconfirm
                 style="margin-left: 5px"
                 title="您确定退选该课吗？"
-                @confirm="save(scope.row.id)"
+                @confirm="CancelSelect(scope.row.id)"
             >
             <el-button type="danger" slot="reference">退选</el-button>
           </el-popconfirm>
@@ -81,6 +81,7 @@ export default {
       request.get('course/student/getCourse').then(res=>{
         this.tableData=res.data.allCourses
         this.total=res.data.allCourses.length;
+        console.log(this.tableData)
         // this.tableData.map((row)=>{
         //   console.log(row)
         //   if(row.allCourses.flag===1){
@@ -91,9 +92,19 @@ export default {
         // })
         // console.log(this.tableData)
       })
-
-
-
+    },
+    CancelSelect(id){
+      request.post('course/student/cancelSelect',{
+          courseId:id
+      }).then(res=>{
+          if(res.code===200){
+            this.$notify.success(res.message);
+            this.load()
+          }
+          else{
+            this.$notify.error(res.message);
+          }
+      })
     },
     save(id) {
       console.log({

@@ -17,8 +17,8 @@ export default {
     }
   },
   created() {
-    //request.get('/admin/' + this.admin.id).then(res => {
-    //  this.admin = res.data
+    //request.get('/user/' + this.user.id).then(res => {
+    //  this.user = res.data
     // })
   }
 }

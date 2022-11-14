@@ -3,7 +3,7 @@
     <el-form>
       <h3 style="align-content: center">我的课表</h3>
       <div style="margin-left: 40px">
-        <el-table :data="tableData" stripe>
+        <el-table :data="tableData.slice((params.pageNum-1)*params.pageSize,params.pageNum*params.pageSize)" stripe>
           <el-table-column prop="course_name" label="课程名称"></el-table-column>
           <el-table-column prop="teacher_name" label="老师"></el-table-column>
           <el-table-column prop="address" label="上课地点"></el-table-column>

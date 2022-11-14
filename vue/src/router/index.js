@@ -46,37 +46,21 @@ const routes = [
                 name: 'Home',
                 component: () => import('@/views/home/HomeView.vue')
             },
-            // User
-            {
-                path: 'userList',
-                name: 'UserList',
-                component: () => import('@/views/user/User.vue')
-            },
-            {
-                path: 'addUser',
-                name: 'AddUser',
-                component: () => import('@/views/user/AddUser.vue')
-            },
-            {
-                path: 'editUser',
-                name: 'EditUser',
-                component: () => import('@/views/user/EditUser.vue')
-            },
             // Admin
             {
                 path: 'adminList',
                 name: 'AdminList',
-                component: () => import('@/views/admin/List.vue')
+                component: () => import('@/views/user/List.vue')
             },
             {
                 path: 'addAdmin',
                 name: 'AddAdmin',
-                component: () => import('@/views/admin/Add.vue')
+                component: () => import('@/views/user/Add.vue')
             },
             {
                 path: 'editAdmin',
                 name: 'EditAdmin',
-                component: () => import('@/views/admin/Edit.vue')
+                component: () => import('@/views/user/Edit.vue')
             },
             {
                 path: 'sc',
@@ -112,7 +96,7 @@ router.beforeEach((to, from, next) => {
     if(to.path===from.path){
         flag=0;
     }
-    // console.log('admin',admin,Admin? admin.userInfo.flag:1)
+    // console.log('user',user,Admin? user.userInfo.flag:1)
     if (!Admin && to.path !== '/login') return next("/login") //强制退回到登录页面
     if(from.path==='/'){
          if (admin.userInfo.flag===0){

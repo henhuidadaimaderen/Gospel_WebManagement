@@ -18,7 +18,7 @@
       <h3 style="align-content: center">当前开设课程列表</h3>
       <div style="margin-left: 40px">
 
-        <el-table :data="tableData" stripe>
+        <el-table :data="tableData.slice((params.pageNum-1)*params.pageSize,params.pageNum*params.pageSize)" stripe>
           <el-table-column prop="courseName" label="课程名称"></el-table-column>
           <el-table-column prop="teacherName" label="老师"></el-table-column>
           <el-table-column prop="studentNum" label="选课人数"></el-table-column>

@@ -1,4 +1,4 @@
-<template>
+template>
   <div style="width: 80%">
     <div style="margin-bottom: 30px">编辑管理员</div>
     <el-form :inline="true" :model="form" label-width="100px">
