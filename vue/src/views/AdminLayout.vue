@@ -30,7 +30,7 @@
         <el-menu :default-active="$route.path"
                  router class="el-menu-demo">
           <el-menu-item index="/">
-            <i class="el-icon-eleme"></i>
+            <i class="el-icon-s-home"></i>
             <span>首页</span>
           </el-menu-item>
           <el-submenu index="admin">
@@ -43,7 +43,7 @@
           </el-submenu>
           <el-submenu index="select">
             <template slot="title">
-              <i class="el-icon-user"></i>
+              <i class="el-icon-menu"></i>
               <span>选课</span>
             </template>
 

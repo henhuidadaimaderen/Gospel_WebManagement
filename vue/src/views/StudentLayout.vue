@@ -30,11 +30,11 @@
         <el-menu :default-active="$route.path"
                  router class="el-menu-demo">
           <el-menu-item index="/">
-            <i class="el-icon-eleme"></i>
+            <i class="el-icon-edit"></i>
             <span>选课</span>
           </el-menu-item>
           <el-menu-item index="/classlist">
-            <i class="el-icon-eleme"></i>
+            <i class="el-icon-reading"></i>
             <span>我的课程信息</span>
           </el-menu-item>
 
