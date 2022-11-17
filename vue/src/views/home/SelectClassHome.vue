@@ -92,7 +92,6 @@ export default {
       request.get('course/student/getCourse').then(res=>{
         this.tableData=res.data.allCourses
         this.total=res.data.allCourses.length;
-        console.log(this.tableData)
         // this.tableData.map((row)=>{
         //   console.log(row)
         //   if(row.allCourses.flag===1){

@@ -93,7 +93,7 @@ router.beforeEach((to, from, next) => {
     const Admin =Cookies.get('admin')
     flag=Cookies.get('admin')? 1:0
     admin = Cookies.get('admin') ? JSON.parse(Cookies.get("admin")) : {}
-    console.log(to.path,from.path,admin)
+
     if(to.path===from.path){
         flag=0;
     }

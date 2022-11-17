@@ -164,7 +164,6 @@ export default {
     },
     del(id){
       request.post('/course/endSelect?courseId='+id,).then(res=>{
-        console.log(res)
         if(res.code===200){
           this.$notify.success(res.message);
           this.load();

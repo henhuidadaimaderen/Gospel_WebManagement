@@ -46,7 +46,6 @@ export default {
   methods: {
     load(){
       request.get('course/student/getSelfCourse').then(res=>{
-        console.log(res.data)
         this.tableData=res.data.CourseList;
         this.total=res.data.CourseList.length;
       })
