@@ -57,6 +57,14 @@
 <script>
 import request from "@/utils/request";
 
+
+window.onload=function (){
+  if(location.href.indexOf('#reloaded')==-1){
+    location.href=location.href+"#reloaded";
+    location.reload();
+  }
+}
+
 export default {
   name: 'SelectClassHome',
   data() {
@@ -71,10 +79,13 @@ export default {
         pageSize: 8,
       },
       total:0,
+      flag:0
     }
   },
   created() {
+    document.ready
     this.load()
+
   },
   methods: {
     load(){

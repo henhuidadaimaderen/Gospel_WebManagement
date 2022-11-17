@@ -61,7 +61,7 @@ export default {
                 this.$router.push('/')
               }
               else{
-                this.$router.push('/student');
+                this.$router.push('/selectClassHome');
               }
             } else {
               this.$notify.error(res.message)

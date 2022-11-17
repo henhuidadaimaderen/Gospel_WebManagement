@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
+import VueRouter from "vue-router";
 import Cookies from "js-cookie";
 import Layout from "@/views/AdminLayout";
 import StudentLayout from "@/views/StudentLayout";
@@ -88,16 +88,19 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+
     if (to.path === '/login') return next()
     const Admin =Cookies.get('admin')
     flag=Cookies.get('admin')? 1:0
     admin = Cookies.get('admin') ? JSON.parse(Cookies.get("admin")) : {}
-    if(from.path==='/login'&&admin.userInfo.flag===0&&to.path==='/selectClassHome') return next('/home')
+    console.log(to.path,from.path,admin)
     if(to.path===from.path){
         flag=0;
     }
     // console.log('user',user,Admin? user.userInfo.flag:1)
     if (!Admin && to.path !== '/login') return next("/login") //强制退回到登录页面
+    if(from.path==='/login'&&admin.userInfo.flag===0&&to.path==='/selectClassHome') return next('/home')
+    if(to.path==='/home'&&admin.userInfo.flag===2) return next("/selectClassHome")
     if(from.path==='/'){
          if (admin.userInfo.flag===0){
             if(to.path === '/student'){
@@ -145,6 +148,7 @@ VueRouter.prototype.push = function push(location, onResolve, onReject) {
     if (onResolve || onReject) return originalPush.call(this, location, onResolve, onReject)
     return originalPush.call(this, location).catch(err => err)
 }
+
 
 
 export default router
